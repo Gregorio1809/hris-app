@@ -17,12 +17,12 @@
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('people.index')" :active="request()->routeIs('people')">
+                    <x-nav-link :href="route('people.index')" :active="request()->routeIs('people.index')">
                         {{ __('People') }}
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('organization.index')" :active="request()->routeIs('organization')">
+                    <x-nav-link :href="route('organization.index')" :active="request()->routeIs('organization.index')">
                         {{ __('Organization') }}
                     </x-nav-link>
                 </div>
@@ -81,6 +81,16 @@
                 {{ __('Dashboard') }}
             </x-responsive-nav-link>
         </div>
+        <div class="pt-2 pb-3 space-y-1">
+                    <x-responsive-nav-link :href="route('people.index')" :active="request()->routeIs('people')">
+                        {{ __('People') }}
+                    </x-responsive-nav-link>
+                </div>
+                <div class="pt-2 pb-3 space-y-1">
+                    <x-responsive-nav-link :href="route('organization.index')" :active="request()->routeIs('organization')">
+                        {{ __('Organization') }}
+                    </x-responsive-nav-link>
+                </div>
 
         <!-- Responsive Settings Options -->
         <div class="pt-4 pb-1 border-t border-gray-200 dark:border-gray-600">
