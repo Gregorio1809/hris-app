@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Organization;
+use App\Rules\UniqueOrg;
 
 class OrganizationController extends Controller
 {
@@ -27,7 +28,7 @@ class OrganizationController extends Controller
 			
 		$request->validate([
 			'organization_name'=>'required',
-			'organization_code'=>'required',
+			'organization_code'=>['required', new UniqueOrg],
 		]);
 		Organization::create($request->all());
 
@@ -43,7 +44,7 @@ class OrganizationController extends Controller
 	public function update(Request $request, $organizationId){
 		$request->validate([
 			'organization_name'=>'required',
-			'organization_code'=>'required',
+			'organization_code'=>['required', new UniqueOrg($organizationId)],
 		]);
 		$organization = Organization::findOrFail($organizationId);
 		$organization->update($request->all());
