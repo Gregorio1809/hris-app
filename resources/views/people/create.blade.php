@@ -4,10 +4,10 @@
 <h1 class="font-bold text-gray-900 dark:text-white py-4 flex items-center justify-center">Add Employee</h1>
 
 @if ($errors->any())
-    <div class="alert alert-danger">
+    <div class="alert alert-danger flex items-center justify-center py-4">
         <ul>
             @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
+                <li><span class="bg-red-100 text-red-800 text-md font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-red-400 border border-red-400">{{ $error }}</span></li>
             @endforeach
         </ul>
     </div>

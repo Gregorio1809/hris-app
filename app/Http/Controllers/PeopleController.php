@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\People;
 use App\Models\Organization;
+use App\Rules\UniqueNumber;
 
 
 class PeopleController extends Controller
@@ -29,7 +30,7 @@ class PeopleController extends Controller
 	public function store(Request $request){
 		// dd($request);
 		$request->validate([
-			'employee_number'=>'required',
+			'employee_number'=>['required', new UniqueNumber],
 			'employee_name'=>'required',
 			'organization_id' => 'required|exists:organizations,id',
 			'legal_address'=>'required',
@@ -50,7 +51,7 @@ class PeopleController extends Controller
 	// TODO cari tau kenapa gabisa di parsing dengan object??
 	public function update(Request $request, $personId){
 		$request->validate([
-			'employee_number'=>'required',
+			'employee_number'=>['required', new UniqueNumber($personId)],
 			'employee_name'=>'required',
 			'organization_id' => 'required|exists:organizations,id',
 			'legal_address'=>'required',
