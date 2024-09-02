@@ -14,9 +14,8 @@ class DashboardController extends Controller
     }
 
 	public function index(){
-	
+        $this->index();
 		return view('dashboard.index');
 	}
 
-	
-}
+
