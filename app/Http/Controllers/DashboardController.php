@@ -14,9 +14,11 @@ class DashboardController extends Controller
     }
 
 	public function index(){
-	
+
 		return view('dashboard.index');
 	}
 
-	
+	public function adimasnopiyanto(){
+        return view('dashboard.adimasnopiyanto');
+    }
 }
