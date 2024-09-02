@@ -17,16 +17,17 @@ class PeopleController extends Controller
     }
 
 	public function index(){
-	
+
 		$queryset = People::all();
-		return view('people.index', compact('queryset'));
+        $person = People::all();
+		return view('people.index', compact('queryset', 'person'));
 	}
-	
+
 	public function create(){
 		$organizations = Organization::all();
 		return view('people.create', compact('organizations'));
 	}
-	
+
 	public function store(Request $request){
 		// dd($request);
 		$request->validate([
@@ -39,12 +40,12 @@ class PeopleController extends Controller
 		People::create($request->all());
 
 		return redirect()->route('people.index')->with('success', 'People created successfully');
-		
+
 	}
 
 	public function edit($personId){
 		$person = People::findOrFail($personId);
-		
+
 		$organizations = Organization::all();
 		return view('people.edit', compact('person', 'organizations'));
 	}
@@ -67,5 +68,5 @@ class PeopleController extends Controller
 		$people->delete();
 		return redirect()->route('people.index')->with('success', 'People deleted successfully');
 	}
-	
+
 }
